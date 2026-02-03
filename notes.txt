@@ -1,0 +1,253 @@
+3rd Feb 2026
+=============
+
+-> Azure DevOps  Course
+
+    -> Azure Cloud 
+
+    -> DevOps Tools 
+
+    -> Azure DevOps 
+
+
+-> Azure Cloud 
+
+    -> On Cloud We Host Applications 
+
+        -> https://www.myntra.com/
+
+    -> Any Application has Data 
+
+        -> WRT Myntra we have products, prices, quantity, images etc 
+    
+    -> Where is this Data stored ? 
+
+        -> Data is in Servers 
+
+    -> What is a Server ?
+
+        -> A Server is a computer system, that takes a Request and Sends Response 
+
+            -> https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Client-server-model.svg/1280px-Client-server-model.svg.png
+
+    -> Where is this Server stored ? 
+
+        -> Servers are Hosted / Located inside a "Datacenter" 
+
+    -> Data Center 
+
+        -> A Data Center is a building, a dedicated space within the building or 
+        a group of buildings, used to house computer systems and associated components
+        such as telecommunication and storage systems.
+
+            -> https://datacenters.microsoft.com/wp-content/uploads/2025/11/OMB-Datacenter-11_11-Hero.jpg
+
+            -> https://thumbs.dreamstime.com/b/server-room-data-center-panorama-racks-servers-190602744.jpg
+
+        
+    -> Cons Of Managing Physical Datacenter
+
+        -> Buy Physical Place 
+        -> Buying Devices [CPU, RAM, HDD, Routers etc]
+        -> Buy AC's, Humidifiers, Cables etc 
+        -> Hire Human Resources [Physical Security, System Admins, Network Admins etc]
+        -> etc 
+
+    -> To Overcome Above Issues, we can opt for Cloud Computing 
+
+    -> Cloud Computing
+
+        -> The Cloud refers to "On-Demand" availability of Compute Power, 
+        Database Storage, Applications and Other IT Resources through a 
+        Cloud Platform(Azure, AWS, GCP, OCI etc) via "Internet" with
+        "Pay As You Go" Pricing.
+
+        -> Cloud Computing can be compared to Online Ride Services 
+
+            -> Ola, Uber, Rapido etc 
+
+            -> Bike, Car, On-demand, Schedule etc  
+
+        -> Cloud Has Vendors 
+
+            -> Azure, AWS, GCP etc 
+
+            -> Cloud Vendors Provide Services like IAAS, PAAS & SAAS.
+
+    
+    -> Cloud Offerings 
+
+        -> Infrastructure As A Service - IAAS
+
+            -> Requirement: Setup MySQL Database Server 
+
+            -> Managed By Cloud Vendor 
+
+                -> Hardware 
+                -> Virtualization
+                    -> https://www.cloud4u.com/upload/medialibrary/e69/what-is-a-virtualization-techology.png
+
+            -> Managed By User
+
+                    -> Select OS (Linux, Win etc)
+                    -> Setup Private Subnets 
+                    -> Setup Bastion Host 
+                    -> Manage NAT 
+                    -> Download MySQL Database Server
+                    -> Install MySQL Database Server
+                    -> Secure MySQL Database Server
+                    -> Backup MySQL Database Server
+                    -> Next On Top of it Application Can be built 
+
+        -> Platform As A Service - PAAS
+
+            -> Requirement: Setup MySQL Database Server 
+
+            -> Managed By Cloud Vendor 
+
+                -> Hardware 
+                -> Virtualization
+                    -> https://www.cloud4u.com/upload/medialibrary/e69/what-is-a-virtualization-techology.png
+                    -> Select OS (Linux, Win etc)
+                    -> Setup Private Subnets 
+                    -> Setup Bastion Host 
+                    -> Manage NAT 
+                    -> Download MySQL Database Server
+                    -> Install MySQL Database Server
+                    -> Secure MySQL Database Server
+                    -> Backup MySQL Database Server
+            
+            -> Managed By User        
+                    
+                -> Next On Top of it Application Can be built 
+
+            -> NOTE: Above is a good choice for Developer Centric Teams 
+
+                -> https://azure.microsoft.com/en-in/pricing/calculator/
+
+
+        -> Software As A Service - SAAS
+
+            -> Requirement: Setup MySQL Database Server For An Application
+
+            -> Managed By Cloud Vendor 
+
+                -> Hardware 
+                -> Virtualization
+                    -> https://www.cloud4u.com/upload/medialibrary/e69/what-is-a-virtualization-techology.png
+                    -> Select OS (Linux, Win etc)
+                    -> Setup Private Subnets 
+                    -> Setup Bastion Host 
+                    -> Manage NAT 
+                    -> Download MySQL Database Server
+                    -> Install MySQL Database Server
+                    -> Secure MySQL Database Server
+                    -> Backup MySQL Database Server
+                    -> Next On Top of it Application Can be built 
+            
+            -> Managed By User        
+                    
+                -> Nothing 
+
+        -> NOTE: Different Offerings From Azure Cloud
+
+            -> https://i.ytimg.com/vi/JAcKVIwQ-5s/maxresdefault.jpg
+
+        -> Solution - 1
+
+            -> Using Only IAAS We can build 
+
+            -> We Want to Build Ecommerce Application
+
+                -> Web Server - Virtual Machines (IAAS)
+                -> App Server - Virtual Machines (IAAS)
+                -> DB Server  - Virtual Machines (IAAS)
+
+        -> Solution - 2
+
+            -> Using IAAS + PAAS We can build 
+
+            -> We Want to Build Ecommerce Application
+
+                -> Web Server - Virtual Machines (IAAS)
+                -> App Server - Virtual Machines (IAAS)
+                -> DB Server  - SQL Server (PAAS)
+
+        -> Solution - 3
+
+            -> Using IAAS + PAAS + SAAS also We can build
+
+    
+    -> Cloud Types / Models 
+
+        -> Public Cloud 
+
+            -> Public cloud resources are shared with multiple tenants. 
+
+        -> Private Cloud 
+
+            -> Private means services are offered to selected entity only i.e One tenant
+
+        -> Hybrid Cloud 
+
+            -> Hybrid cloud is a mix of private and public cloud.
+
+    
+    -> Azure Cloud Goal is to host Applications On Cloud 
+
+    -> Traditional Approach (Setting Up Applications On Physical Datacenter)
+
+        -> Myntra Application 
+
+            -> Servers 
+                +
+            -> Storage 
+                +
+            -> Databases        ========>   Application 
+                +
+            -> Networking 
+                +
+            -> Security 
+                +
+            -> etc 
+
+    -> New Approach (Setting Up Applications On Cloud Datacenter - On Azure)
+
+        -> Myntra Application 
+
+            -> Servers      - Azure Virtual Machines Service   
+                +                   +
+            -> Storage      - Azure Disk, Storage Accounts, FileShares Services
+                +                   +
+            -> Databases    - Azure SQL Service                                     ========>   Application 
+                +                   +
+            -> Networking   - Azure Virtual Network Service
+                +                   +
+            -> Security     - Azure Entra ID Service
+                +                   +
+            -> etc          - Other Azure Services 
+
+    
+    -> Once Application is built on Cloud 
+
+        -> Application should have following characteristics (Four Pillars Of Cloud)
+
+            -> High Availability
+
+                -> High Availability in Azure ensures Applications are continuously 
+                Accessible & Operational (24X7) i.e Uptime 99.9% and Above 
+
+            -> Fault Tolerance 
+
+                -> Fault Tolerance in Azure is an ability of the systems to continue 
+                operating without interruption in the event of Hardware Failures i.e "Self Healing" 
+
+            -> Scalability 
+
+                -> Scalability in Azure is an ability of the systems to handle the 
+                increasing workloads and accommodate according to Growing Demands.
+
+            -> Security 
+
+                -> Security in Azure refers to measures taken to protect cloud Resources, Data and 
+                Applications from Unauthorized Access 
