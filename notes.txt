@@ -251,3 +251,189 @@
 
                 -> Security in Azure refers to measures taken to protect cloud Resources, Data and 
                 Applications from Unauthorized Access 
+
+
+5th Feb 2026
+=============
+
+    -> Infrastructure As A Service - IAAS
+
+        -> Azure Global Infra - https://azure.microsoft.com/en-in/global-infrastructure/
+
+            -> 70+ Azure regions | 400+ datacenters
+
+            -> https://datacenters.microsoft.com/globe/explore/
+
+        -> Azure Infrastructure is made of 
+
+            -> Regions 
+
+            -> Availability Zones 
+
+        -> Regions 
+
+            -> Azure regions are distinct, geographically dispersed locations containing at least one, 
+            but often multiple, datacenters to provide global service coverage.
+
+            -> 70+ Azure regions 
+
+            -> Always Select Regions Based On Customers Locations(Nearest)
+
+        -> Availability Zones 
+
+            -> Availability Zones (AZs) are physically separate, isolated datacenters within a region, 
+            featuring independent power, cooling, and networking to ensure 
+            high availability and fault tolerance
+
+            -> Availability Zones are spaced apart (often within 100km) to withstand local outages.
+
+            -> Always Select Availability Zones for critical applications requiring high availability 
+            (e.g., VMs, databases) to protect against datacenter-level failures. 
+
+            -> https://azurelib.com/wp-content/uploads/2021/02/image-62.png
+
+            -> For High Availability 
+
+                -> https://blog.siliconvalve.com/static/images/2020/as03.png
+
+        
+    -> To Utilize Azure Infrastructure we need to create Azure Account 
+
+        -> https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account
+
+            -> Email ID 
+            -> Mobile Number 
+            -> Card (2 INR for verification)
+
+    
+    -> Azure Virtual Networks - VNET (VPC)
+
+        -> A Virtual Network (VNET) in Azure is a foundational service that enables you to 
+        build your own private network in the Azure cloud.
+
+        -> VNET lets you launch AZURE resources (servers, databases, storage etc) in a 
+        logically isolated virtual network that you define.
+
+        -> Having VNET is similar to having your own data center inside AZURE.
+
+            -> https://images.ctfassets.net/xxmwcynv5jdx/3T6K8Xxgb6jk10Zio5G1gw/da9ab697929d1be9036cd1cfc56f13c8/azure-vnet.png?w=1600&h=650&q=50&fit=fill&f=center
+
+            -> https://blog.siliconvalve.com/static/images/2020/as03.png    
+
+    -> Azure Subnet 
+    
+        -> An Azure subnet is a logical division of an Azure Virtual Network (VNet) 
+        that segments its address space, allowing you to organize and secure resources like 
+        VMs, databases, and PaaS services within specific IP ranges for 
+        better management and isolation. 
+        
+        -> Subnets enable fine-grained control(firewall) through Network Security Groups (NSGs) 
+        for traffic filtering
+
+        -> https://images.ctfassets.net/xxmwcynv5jdx/3T6K8Xxgb6jk10Zio5G1gw/da9ab697929d1be9036cd1cfc56f13c8/azure-vnet.png?w=1600&h=650&q=50&fit=fill&f=center
+
+
+        -> Most Popular Applications
+            
+            -> https://en.wikipedia.org/wiki/Programming_languages_used_in_most_popular_websites
+
+            -> https://aidanfinn.com/wp-content/uploads/2025/02/image-10.png
+
+        -> NOTE: How many resources (servers) can be hosted in a subnet ? 
+
+            -> Subnetting Rules 
+
+                -> A subnet is a range of IP addresses in the virtual network. 
+
+            -> Subnet Calculator 
+
+                -> https://mattrickard.com/static/image/how-to-calculate-a-cidr/1.webp
+
+        
+        -> Azure Network Reserved IP's 
+
+            -> Azure reserves the first four and last IP addresses for a total of 5 IP addresses 
+            within each subnet.
+
+        -> For example, the IP address range of 10.0.1.0/24 has the following reserved addresses:
+
+            10.0.1.0 : Network address
+            10.0.1.1 : Reserved by Azure for the default gateway
+            10.0.1.2, 10.0.1.3 : Reserved by Azure to map the Azure DNS
+            10.0.1.255 : Network broadcast address.
+
+                -> The addresses we can use are from only 10.0.1.4 - 10.0.1.254
+
+        10.0.0.0/16 -> 65636
+
+            10.0.0.0
+            10.0.0.1
+            10.0.0.2
+            .
+            .
+            10.0.0.255 
+            10.0.1.0
+            10.0.1.1
+            .
+            .
+            10.0.1.255
+            .
+            10.0.2.255
+            .
+            10.0.3.255
+
+            .
+            .
+            10.0.255.255
+
+
+            Myntra VNET - 10.0.0.0/16 (65536)
+
+            Myntra Web Subnet (Web Server) - 1k Servers 
+
+                -> 10.0.0.0/22
+
+                    -> 10.0.0.0 - Network address
+                    -> 10.0.0.1 - Reserved by Azure for the default gateway
+                    -> 10.0.0.2 - Azure DNS
+                    -> 10.0.0.3 - Azure DNS
+                    -> 10.0.0.4
+                    -> 10.0.0.5
+                    .
+                    .
+                    .
+                    -> 10.0.3.254
+                    -> 10.0.3.255 - Network broadcast address
+
+            Myntra App Subnet (App Server) - 1k Servers 
+
+                -> 10.0.4.0/22
+
+                    -> 10.0.4.0 - Network address
+                    -> 10.0.4.1 - Reserved by Azure for the default gateway
+                    -> 10.0.4.2 - Azure DNS
+                    -> 10.0.4.3 - Azure DNS
+                    -> 10.0.4.4
+                    -> 10.0.4.5
+                    .
+                    .
+                    .
+                    -> 10.0.7.254
+                    -> 10.0.7.255 - Network broadcast address
+
+
+            Myntra DB Subnet (DB Server) - 250 Servers 
+
+                -> 10.0.8.0/24
+
+                    -> 10.0.8.0 - Network address
+                    -> 10.0.8.1 - Reserved by Azure for the default gateway
+                    -> 10.0.8.2 - Azure DNS
+                    -> 10.0.8.3 - Azure DNS
+                    -> 10.0.8.4
+                    -> 10.0.8.5
+                    .
+                    .
+                    .
+                    -> 10.0.8.254
+                    -> 10.0.8.255 - Network broadcast address
