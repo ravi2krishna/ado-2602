@@ -531,3 +531,120 @@
 
         -> NOTE: If we Use CLI we can overcome above, while creating Virtual Machine in CLI
         we can attach our custom Network Interface directly 
+
+
+10th Feb 2026
+=============
+
+    -> Testing Myntra VNET 
+
+        -> Public Server i.e Web Server 
+
+        -> Private Server i.e Database Server 
+
+    -> To Create Servers we have Virtual Machines Service From Azure 
+
+    -> After Virtual Machine is created, update network settings like Network Interfaces
+    and NSG 
+
+    -> Testing Myntra Web Server & Myntra DB Server connectivity using 
+
+        -> Terminal / Powershell / GitBash 
+
+        -> https://ssheasy.com/ 
+
+    -> NOTE: Myntra Web Server Accessible From Internet & Myntra DB Server Not Accessible From Internet
+
+
+    -> Most Popular Applications
+            
+            -> https://en.wikipedia.org/wiki/Programming_languages_used_in_most_popular_websites
+
+    
+    -> One of the new Requirements, given by an organization (Edify)
+
+    -> For their business needs, Edify started running an training institute 
+    and wants to provide an Learning Management Systems(LMS) to their Customers 
+    i.e Students, Trainers etc 
+
+        -> Edify Requirement 
+
+            -> Edify is going to setup the LMS App environment i.e servers on AZURE 
+
+            -> We have three Different Tiers (Frontend - Backend - Database)
+
+            -> Frontend - 1000 Servers 
+            -> Backend - 500 Servers 
+            -> Database - 200 Servers 
+
+            -> In the future, they might add more number of subnets i.e 
+            cache subnets, load balancer subnet etc
+
+            -> The web servers and app servers needs to be communicated from internet
+
+	        -> The database servers needs to be communicated only from App Servers, 
+            but not from internet
+
+            -> Coming to security of Web Servers, they should have only 
+                -> SSH traffic enabled for administration from internet
+                -> HTTP traffic for clients from internet
+                -> HTTPS traffic for clients from internet
+
+            -> Coming to security of App Servers, they should have only 
+                -> SSH traffic enabled for administration from internet
+                -> HTTP traffic port 3000 for clients from internet
+
+            -> Coming to security of Database Servers, they should have only SSH access from app servers
+                -> SSH traffic enabled from web servers only
+                -> Postgres Database Traffic (5432) Allowed from App Servers
+
+
+    -> NOTE: Earlier when we have setup Myntra Infrastructure using GUI almost took 60 Mins 
+
+        -> Create Myntra VNET (Frontend, Backend, Database) - Using GUI - 60 Mins 
+
+        -> New Requirement: Create LMS VNET (Frontend, Backend, Database) - Using GUI - 60 Mins 
+
+        -> New Requirement: Create HRMS VNET (Frontend, Backend, Database) - Using GUI - 60 Mins 
+
+        -> New Requirement: Create CRM VNET (Frontend, Backend, Database) - Using GUI - 60 Mins 
+
+    -> NOTE: You can go with above Approach i.e GUI if you are a beginner
+
+    -> NOTE: Once you have understanding of Infrastructure in GUI, we can use other 
+    Approaches to create infrastructure in an efficient way 
+
+    -> To Setup Infrastructure On Azure we can use
+
+        -> Graphical User Interface - GUI - Beginner Level - No Automation - Newbies  
+
+        -> Command Line Interface - CLI - Intermediate Level - Partial Automation - Admins 
+
+        -> Scripting - CODE - Pro Level - Complete Automation - DevOps Engineers 
+
+
+    -> Azure CLI (Command Line Interface)
+
+        -> The Azure Command-Line Interface (CLI) is a cross-platform "command-line tool" 
+        used to create and manage Azure resources "efficiently", with an emphasis on 
+        "automation" and "scripting". 
+
+        -> Azure resources
+
+            -> Vnet, Subnets, RouteTables, NSG, Public IP, Network Interfaces, VM, Disk etc 
+    
+        -> It is available for Windows, macOS, and Linux.
+
+        -> Install Azure CLI Using 
+
+            -> https://learn.microsoft.com/en-us/cli/azure/?view=azure-cli-latest
+
+            -> Open Powershell / Terminal / Command Prompt
+
+                -> type "az" command  
+
+        -> To Authenticate Use 
+
+            -> az login --use-device-code 
+
+            -> 
