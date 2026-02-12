@@ -647,4 +647,63 @@
 
             -> az login --use-device-code 
 
-            -> 
+
+12th Feb 2026
+=============
+
+    -> Creating Myntra Infrastructure Using CLI 
+
+        -> az group create --name myntra --location westus2
+
+        -> az network vnet create -g myntra -n myntra-vnet --address-prefix 10.0.0.0/16 
+
+        -> az network vnet subnet create -g myntra --vnet-name myntra-vnet -n myntra-web-sn --address-prefixes 10.0.0.0/24 
+
+        -> az network vnet subnet create -g myntra --vnet-name myntra-vnet -n myntra-app-sn --address-prefixes 10.0.1.0/24 
+
+        -> az network vnet subnet create -g myntra --vnet-name myntra-vnet -n myntra-db-sn --address-prefixes 10.0.2.0/24 
+
+        -> az network route-table create -g myntra -n myntra-pub-rt 
+
+        -> az network route-table route create -g myntra --route-table-name myntra-pub-rt -n www-route --next-hop-type Internet --address-prefix 0.0.0.0/0
+
+        -> az network vnet subnet update --resource-group myntra --vnet-name myntra-vnet --name myntra-web-sn --route-table myntra-pub-rt
+
+        -> az network vnet subnet update --resource-group myntra --vnet-name myntra-vnet --name myntra-app-sn --route-table myntra-pub-rt
+
+        -> az network route-table create -g myntra -n myntra-pvt-rt 
+
+        -> az network route-table route create -g myntra --route-table-name myntra-pvt-rt -n local-route --next-hop-type VnetLocal --address-prefix 10.0.0.0/16 
+
+        -> az network vnet subnet update --resource-group myntra --vnet-name myntra-vnet --name myntra-db-sn --route-table myntra-pvt-rt
+
+        -> az network nsg create -g myntra -n myntra-web-nsg 
+
+        -> az network nsg rule create -g myntra --nsg-name myntra-web-nsg -n myntra-web --priority 100 --source-address-prefixes Internet --destination-port-ranges 22 80 443 --access Allow --protocol Tcp --description "Allow Internet to Web Server on ports 22, 80, 443."
+
+        -> az network nsg create -g myntra -n myntra-app-nsg 
+
+        -> az network nsg rule create -g myntra --nsg-name myntra-app-nsg -n myntra-app --priority 110 --source-address-prefixes Internet --destination-port-ranges 22 8080 --access Allow --protocol Tcp --description "Allow Internet to App Server on ports 22, 8080."
+
+        -> az network nsg create -g myntra -n myntra-db-nsg 
+
+        -> az network nsg rule create -g myntra --nsg-name myntra-db-nsg -n myntra-db-ssh --priority 120 --source-address-prefixes 10.0.0.99/32 --destination-port-ranges 22 --access Allow --protocol Tcp --description "Allow SSH to DB Server on ports 22 from 10.0.0.99"
+
+        -> az network nsg rule create -g myntra --nsg-name myntra-db-nsg -n myntra-db-mysql --priority 130 --source-address-prefixes 10.0.1.0/24 --destination-port-ranges 3306 --access Allow --protocol Tcp --description "Allow MYSQL to DB Server on ports 3306 from all app servers"
+
+        -> az network public-ip create -g myntra -n myntra-web-pip 
+
+        -> az network nic create -g myntra --vnet-name myntra-vnet --subnet myntra-web-sn -n myntra-web-nic 
+
+        -> az network nic ip-config update -g myntra --nic-name myntra-web-nic -n ipconfig1 --public-ip-address myntra-web-pip 
+
+        -> az network nic update -g myntra -n myntra-web-nic --network-security-group myntra-web-nsg 
+
+        -> az network nic create -g myntra --vnet-name myntra-vnet --subnet myntra-app-sn -n myntra-app-nic 
+
+        -> az network nic update -g myntra -n myntra-app-nic --network-security-group myntra-app-nsg
+
+        -> az network nic create -g myntra --vnet-name myntra-vnet --subnet myntra-db-sn -n myntra-db-nic 
+
+        -> az network nic update -g myntra -n myntra-db-nic --network-security-group myntra-db-nsg
+
