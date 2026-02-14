@@ -707,3 +707,92 @@
 
         -> az network nic update -g myntra -n myntra-db-nic --network-security-group myntra-db-nsg
 
+
+14th Feb 2026
+=============
+
+    -> Creating Virtual Machine Using CLI 
+
+        -> az vm create -n myntra-web-vm -g myntra --image Ubuntu2404 --nics myntra-web-nic --admin-username ubuntu --admin-password Login@123456 --size Standard_B1s 
+
+    -> Creating Infrastructure
+    
+        -> GUI: Beginners 
+
+        -> CLI: Intermediate 
+
+        -> Code: Professional (DevOps)
+
+    -> Infrastructure As Code - IaC (Pro/Expert)
+
+        -> Infrastructure as code is the process of managing and provisioning computer 
+        data center resources(vnet, subnet, nsg, pip etc) through machine-readable 
+        definition files(CODE/SCRIPT), rather than physical hardware configuration(GUI) or 
+        interactive configuration tools(Azure CLI).
+
+        -> IaC Concept 
+
+            -> The IaC model approaches networks, servers, databases, and other resources 
+            in a descriptive manner via "versioning" (similar to using VCS in Development, 
+            in DevOps we are tracking infrastructure code). 
+
+                -> Like Developers write "Application Code" to Build Applications
+
+                    -> Technologies - Java, Python, Node etc
+                
+                -> As DevOps Engineers, will be writing "Infrastructure Code/Scripts" to 
+                Build Infrastructure
+
+                    -> Tools / Services - Azure ARM Templates, AWS Cloudformation Templates etc
+
+    -> Azure ARM Templates  
+
+        -> An Azure Resource Manager (ARM) template is a JavaScript Object Notation (JSON) 
+        file that defines the infrastructure and configuration for your Azure project 
+        using a declarative syntax. It allows you to provision, manage, and deploy 
+        all the necessary resources for your solution in a single, coordinated operation, 
+        ensuring consistency and repeatability across different environments. 
+
+        -> https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/overview
+
+            {
+            "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+            "contentVersion": "1.0.0.0",
+            "parameters": {
+                "location": {
+                "type": "string",
+                "defaultValue": "[resourceGroup().location]"
+                }
+            },
+            "resources": [
+                {
+                "type": "Microsoft.Storage/storageAccounts",
+                "apiVersion": "2025-06-01",
+                "name": "mystorageaccount",
+                "location": "[parameters('location')]",
+                "sku": {
+                    "name": "Standard_LRS"
+                },
+                "kind": "StorageV2"
+                }
+            ]
+            }
+
+        -> https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/
+
+    
+    -> Templates Can be Created Using
+
+        -> Using Microsoft Website 
+
+        -> USing Visual Studio Code (IDE) 
+
+            -> Install Azure Resource Manager Snippets Extension
+
+        -> Best Approach is generating templates from Azure Portal (Recommended)
+
+            -> az deployment group create --resource-group <resource-group-name> --template-file <path-to-template>
+
+            -> az group create --location westus2 --name tcs
+
+            -> az deployment group create --resource-group tcs --template-file infra.json 
