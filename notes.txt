@@ -793,6 +793,65 @@
 
             -> az deployment group create --resource-group <resource-group-name> --template-file <path-to-template>
 
-            -> az group create --location westus2 --name tcs
+            -> az group create --location westus2 --name myntra
 
-            -> az deployment group create --resource-group tcs --template-file infra.json 
+            -> az deployment group create --resource-group myntra --template-file myntra-infra.json 
+
+
+17th Feb 2026
+=============
+
+    -> ARM Templates
+
+        -> Creating Resources Using ARM Templates 
+
+            -> refer to storage.json 
+
+
+        -> Creating Resources Using Azure CLI 
+
+            -> az storage account create \
+            --name <storage-account-name> \
+            --resource-group <resource-group-name> \
+            --location <location> \
+            --sku Standard_GRS \
+            --kind StorageV2
+
+        -> NOTE: Now we have the understanding of Azure Network Infrastructure 
+
+        -> Let's Move towards Server Infrastructure 
+
+    
+    -> Azure Virtual Machines - VM's 
+
+        -> An Azure Virtual Machine (VM) is a scalable, on-demand computing resource in the 
+        Microsoft Azure cloud that emulates a physical computer, giving you control over the 
+        OS and applications without managing hardware.
+
+        -> Azure Virtual Machines - VM's - components
+
+            -> Desktop / physical computer                   -> Azure Virtual Machine 
+
+                -> Hardware                                        -> Hardware 
+
+                    -> Dell 3050, Dell 5070 etc                         -> Sizes [CPU + RAM]
+                            cpu & ram                                         b1s, b2s etc 
+
+                    -> Hard Drive [200 / 500 GB]                        -> Disk [200 / 500 GB]
+
+                -> Install Operating Systems                        -> Images (Operating Systems)
+                        (win, linux)                                        (win, linux)
+
+                -> Network                                          -> Azure VNET          
+
+                -> Login / Authenticate                             -> Login / Authenticate
+                    username & password                                 username & password & keys 
+
+                -> Now start work with                              -> Now start work with 
+                    -> Using Applications                               -> Deploying Applications 
+                        -> Browser, Music Players etc                       -> Web Servers, DB Servers etc 
+
+                        
+
+
+
