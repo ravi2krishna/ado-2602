@@ -1,0 +1,94 @@
+Service Now ITOM 
+
+    -> IT Operations and Management 
+
+        -> IT Infrastructure 
+
+            -> Any Application Requires Infrastructure 
+
+                -> Servers 
+
+                    -> Web Severs 
+
+                    -> App Severs 
+
+                    -> Database Servers 
+
+                    -> etc 
+
+            -> IT Teams Manage IT Infrastructure 
+
+                -> System Administrator 
+
+                -> Network Administrator 
+
+                -> Database Administrator 
+
+                -> Cloud Administrator 
+
+                -> etc 
+
+    
+    -> Skills (IT Operations)               -> ServiceNow ITOM Concepts 
+
+        -> Servers(Win / Linux)                 -> Configuration Items (CI)
+
+        -> Networking Concepts                  -> Discovery & Connectivity 
+        (IP, DNS, Ports)
+
+        -> Firewalls                            -> MID Server Communication
+        (Network Filters)
+        (Inbound/Outbound)
+        (Protocols - RDP/SSH)
+
+        -> Cloud (AWS/AZURE)                    -> Cloud Discovery
+        (What is Cloud)
+        (What is AWS/AZURE)
+        (How To use Cloud)
+
+        -> Monitoring                           -> Event Management 
+        (CPU Usage, Disk Usage)
+        CPU Above 85% - Send Email
+
+        -> CMDB                                 -> Single Source Of Truth 
+
+        
+        -> CI / CD                              -> Change & Release Integration 
+
+
+    -> Core Components 
+
+        -> ServiceNow Instance
+        -> MID Server (Physical Server / Cloud Server / Virtual Machine)
+        -> Target Infrastructure (Networking Devices, Storage Devices, CPU's, Cloud)
+        -> Credentials 
+        -> Discovery
+
+    -> MID Sever provides an automation ability that executes tasks on Infrastructure
+    Components and sends the results back to Service Now i.e why we call it as Agent 
+
+    -> MID Server Connectivity Requirements 
+
+        -> Protocols : HTTPS 
+        -> Ports: 443 
+        -> Traffic Type: OutBound 
+
+    
+    -> MID Server   -> Target Servers 
+
+        -> Depends On Technology 
+
+        -> Target               -> Protocol                   -> Ports 
+
+            -> Linux                -> SSH                      -> 22 
+            -> Windows              -> RDP                      -> 3389 
+            -> Network Device       -> SNMP                     -> 161
+            -> Databases            -> JDBC                     -> Varies (3306)
+
+
+    -> How To Setup Cloud Network 
+    -> How To Setup Network Components 
+    -> How To Setup Servers  
+
+
+

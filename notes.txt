@@ -852,6 +852,96 @@
                         -> Browser, Music Players etc                       -> Web Servers, DB Servers etc 
 
                         
+21st Feb 2026
+=============
 
+    -> Setup Virtual Machines 
+
+        -> Linux Servers - Protocol: SSH - Port: 22
+
+        -> Windows Server - Protocol: RDP - Port: 3389
+
+    -> Why Servers ?
+
+        -> Deploying Applications 
+
+            -> To Deploy Applications we need Server Side Softwares 
+
+                -> Web Servers - Used for hosting Frontend part of Applications  
+
+                -> Application Servers - Used for hosting API's 
+
+                -> Database Servers - - Used for hosting Databases to store applications data 
+
+        
+    -> Web Servers 
+
+        -> A web server is computer software that accepts requests via HTTP 
+        to distribute web content.
+
+            -> https://media.licdn.com/dms/image/v2/D4D12AQExGSjbIi_-Mg/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1676207646033?e=2147483647&v=beta&t=V_oJZ-sfSHS_Jv7VpR-XLNJble4L45vD6ymUymN0PE0
+
+        -> Web Servers use HTTP / HTTPS Protocol for distributing web content
+
+            -> HTTP - Port 80
+            -> HTTPS - Port 443
+
+        -> IIS Server
+
+            -> Internet Information Services (IIS) is a flexible, secure, and manageable 
+            web server from Microsoft for hosting websites, services, and applications on 
+            Windows systems.
+
+            -> Setup IIS Server 
+
+            -> Application Code - https://github.com/ravi2krishna/ecomm.git 
+
+            -> Every Web Server has Document Root i.e location where code should be placed
+        
+                -> C:\inetpub\wwwroot 
+
+    
+
+        -> Linux Servers - Protocol: SSH - Port: 22
+
+            -> Setup Linux Server (Ubuntu 24.04)
+
+            -> Connect With Server Using SSH 
+
+                -> ssh -i key username@ip-address 
+
+                -> ssh -i key username@dns-address 
+
+            -> Setup Web Server 
+
+                -> Nginx Web Server 
+
+                    -> Nginx is a web server that can also be used as a reverse proxy, 
+                    load balancer, mail proxy and HTTP cache.
+
+                -> To Know which service is currently running on server 
+
+                    -> sudo ss -ntpl 
+
+                -> Web Servers Run on port 80 over HTTP protocol
+
+                -> Installing Nginx Web Server 
+
+                    -> sudo apt update -y 
+                    -> sudo apt install nginx -y 
+                    -> sudo ss -ntpl 
+                    -> Browse Public IP 
+
+            -> Application Code - https://github.com/ravi2krishna/ecomm.git 
+
+            -> Every Web Server has Document Root i.e location where code should be placed
+        
+                -> ls /var/www/html
+                -> sudo rm -r /var/www/html/* 
+                -> ls /var/www/html
+                -> sudo git clone https://github.com/ravi2krishna/ecomm.git /var/www/html 
+
+
+        
 
 
