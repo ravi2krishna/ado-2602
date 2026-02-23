@@ -942,6 +942,42 @@
                 -> sudo git clone https://github.com/ravi2krishna/ecomm.git /var/www/html 
 
 
-        
+23rd Feb 2026
+=============
+
+    -> Now Let's see how to backup Servers In Azure 
+
+        -> We have Azure Compute Gallery where we can store 
+        Custom Images for applications 
+
+            -> https://learn.microsoft.com/en-us/partner-center/marketplace-offers/azure-vm-use-own-image
+
+
+    -> Azure Disks 
+
+        -> When we create VM, a primary disk will be assigned based on the Zone Where VM is launched 
+
+            -> This primary disk we call it as OS Disk, Only One OS Disk 
+
+        -> While Creating VM, by default Primary Disk i.e OS Disk will be applied and optionally
+        you can add Secondary Disks i.e Data Disks or Attach Existing Disks 
+
+        -> NOTE: Availability Zones and Server Zones are Locked with each other 
+
+            -> Create Disk 
+            -> Attach Disk 
+            -> Detach Disk 
+            -> Delete Disk 
+
+        -> When doing modifications on disk 
+
+            -> Only Scale Up is possible, No Scale Down 
+
+            -> Changing Zone is not possible 
+
+            -> Cannot Attach To Multiple VM's 
+
+            -> Cannot Attach to Other Zones 
+
 
 
