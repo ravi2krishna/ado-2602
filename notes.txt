@@ -979,5 +979,36 @@
 
             -> Cannot Attach to Other Zones 
 
+    
+24th Feb 2026
+=============
+
+    -> Snapshots 
+
+        -> An Azure disk snapshot is a read-only, point-in-time copy of a managed disk (OS or data) 
+        used for backups, disaster recovery, or VM image creation.
+
+    -> Disks 
+
+        -> Cannot Attach To Multiple VM's 
+
+        -> Cannot Attach to Other Zones 
+
+    -> NOTE: To overcome above issues with Disks, we have Azure NFS File FileShares
+
+
+    -> Azure NFS File Share 
+
+        -> Azure NFS (Network File System) file shares provide fully managed, 
+        high-performance, POSIX-compliant storage, ideally suited for Linux-based applications 
+        and workloads requiring low latency. 
+        
+        -> They run on Premium SSD storage, supporting NFS v4.1
+
+        -> NFS: https://media.geeksforgeeks.org/wp-content/uploads/20240110221112/Untitled-Diagramdrawio-(2).png
+
+        
+
+
 
 
