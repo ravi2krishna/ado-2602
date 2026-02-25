@@ -1007,8 +1007,126 @@
 
         -> NFS: https://media.geeksforgeeks.org/wp-content/uploads/20240110221112/Untitled-Diagramdrawio-(2).png
 
-        
+
+25th Feb 2026
+=============
+
+    -> Azure Disk is Purely Server Based Storage 
+
+    -> Without Azure Disk, We cannot setup Servers / Virtual Machines (OS Disk is must)
+
+    -> Azure Disk Design Principal (Limitations)
+
+        -> Using Azure Disk We cannot directly work with Internet Based Storage 
+
+        -> Using Azure Disk we cannot get data across multiple zones 
+
+        -> Using Azure Disk we cannot scale down, only scale up is possible and need to pay 
+        complete storage charges, regardless we use it or not 
+
+        -> Costlier in terms of price 
+
+            -> 500 GB Azure Disk - $22 
+
+    -> Storage Center / Blob Storage
+
+        -> Azure Blob Storage provides scalable, cost-efficient object storage in the cloud. 
+        Store and access unstructured data for your most demanding workloads.
+
+            -> Using Blob Storage we can overcome above issues 
+
+            -> Blob Storage cannot be used as OS Disk 
+
+            -> Blob Storage supports internet based access directly, 
+            no need of any computer resource like virtual machines 
+
+            -> Price is cheaper Compared to Azure Disks 
+
+                -> 500 GB BLOB Storage - $11 
+
+            -> When you have vast amount of static assets, go for Blob Storage
+            (images, videos, documents pdf, doc files etc)
+
+                -> https://www.baeldung.com/wp-content/uploads/sites/4/2023/03/blob_storage_architecture-2.png
+
+        -> We Have Storage Account (unique names like domain)
+
+            -> We Have Containers (like folders)
+
+                -> We Have Blobs (like files)
+
+        -> Blob Storage can be accessed / updated using Browser 
+
+            -> Directly Via Browser 
+
+        -> Blob Storage can be accessed / updated using Server 
+
+            -> Download Azure CLI 
+
+        -> Blob Storage can be accessed / updated using Workstation 
+
+            -> Download Azure Storage Explorer  
 
 
+        -> Manage Blob Storage Using VM's 
 
+            -> Install Azure CLI 
+
+                -> az
+
+                -> curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+
+                -> az
+
+            -> Login To Your Azure Account 
+
+                -> az login --use-device-code 
+
+            -> Listing Storage Accounts 
+
+                -> az storage account list
+                -> az storage account list --output table
+                -> az storage account list --resource-group myntra
+
+            -> Listing Blobs
+
+                -> az storage blob list \
+                --account-name <storage-account-name> \
+                --container-name <container-name> \
+                --output table
+
+                -> az storage blob list \
+                --account-name myntra \
+                --container-name images \
+                --output table
+
+            -> Update / Upload Blob 
+
+                az storage blob upload \
+                --account-name <storage-account-name> \
+                --container-name <container-name> \
+                --name <blob-name> \
+                --file <local-file-path> \
+                --auth-mode key \
+                --account-key provide-key-here 
+
+                az storage blob upload \
+                --account-name myntra \
+                --container-name images \
+                --name shirt-2.jpg \
+                --file shirt-2.jpg \
+                --auth-mode key \
+                --account-key provide-key-here 
+
+            -> Delete Blob 
+
+                -> az storage blob delete --container-name images \
+                --name shirt-1.jpg --account-name myntra \
+                --auth-mode key \
+                --account-key provide-key-here 
+                
+
+        -> Manage Blob Storage Using Workstation
+
+            -> Use Connection String / Access Key 
 
