@@ -1130,3 +1130,46 @@
 
             -> Use Connection String / Access Key 
 
+
+26th Feb 2026
+=============
+
+    -> Server Level Storage - Azure Disks 
+
+    -> Shared File Storage - Azure File Shares 
+
+    -> Internet Based Storage - Azure BLOB Storage 
+
+    
+    -> Azure File Shares 
+
+        -> An Azure File Share provides fully managed, enterprise-grade cloud file shares
+        accessible via industry-standard protocols (SMB/NFS) from Windows, Linux.
+
+        -> Attach Network File Storage for Virtual Machines  
+
+    -> Create VM 
+
+    -> Create File Share in Storage Account 
+
+    -> Connect File Share With VM 
+
+    -> To enable static website hosting, select a storage account. 
+    In the left navigation pane, select Static website rom the Data management group.
+
+    -> Security 
+
+        -> Identity Level
+
+            -> Microsoft Entra ID: Manage Identities In Azure 
+
+            -> Create Users 
+
+            -> Assign Permissions Using Azure role-based access control (Azure RBAC) 
+            has several Azure built-in roles that you can assign to users
+
+            -> Adding Azure identity roles involves navigating to the "Access control (IAM)" 
+            section of a resource, subscription, or management group in the Azure portal, 
+            clicking "Add" and "Add role assignment," selecting the desired role 
+            (e.g., Contributor, Owner), and choosing the user, group, or service principal
+
