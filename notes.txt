@@ -1173,3 +1173,191 @@
             clicking "Add" and "Add role assignment," selecting the desired role 
             (e.g., Contributor, Owner), and choosing the user, group, or service principal
 
+
+27th Feb 2026
+=============
+
+    -> Next we need to start working with Database Storage 
+
+    -> Before going to Database Storage we need to understand about Network Security 
+
+    -> Security For Virtual Machines 
+
+        -> When we are talking about increased security, what we want to focus on is, 
+        placing of Virtual Machines that hold sensitive data in Private Subnets 
+
+        -> However this causes some issue
+
+            -> We cannot serve traffic from private instances as there is no route to 
+            the open internet and also we cannot access Virtual Machines that are 
+            in Private Subnets 
+
+    -> Azure Bastion 
+
+        -> The Azure Bastion service is a fully platform-managed PaaS service 
+        that you provision inside your virtual network. It provides secure and 
+        seamless RDP/SSH connectivity to your virtual machines directly from the Azure portal
+
+        -> https://azure.microsoft.com/en-us/blog/wp-content/uploads/2019/06/c44e78bb-bfe1-47a6-b250-0643e0f6c3bd.webp
+
+        -> Azure Bastion protects your virtual machines by secure and seamless RDP & SSH connectivity
+        without the need to expose them through public IP addresses. 
+        Deploying will automatically create a Bastion host on a subnet in your virtual network.
+
+    
+    -> IaaS & PaaS 
+
+        -> Database Using IaaS (Virtual Machines)
+
+            -> Setup Database Server and Install Database Software(MySQL)
+
+        -> Database Using PaaS (SQL Service)
+
+            -> Setup Database Server and Install Database Software(MySQL)
+
+    
+    -> Database Using IaaS (Virtual Machines)
+
+        -> Connect Private Database With Application Facing On Internet 
+
+            -> https://media.istockphoto.com/id/1227417874/vector/registration-form-and-login-form-page-template.jpg?s=1024x1024&w=is&k=20&c=TLLokn9YSx5E6cY55HSn_yToJ50F_8wHhAENqMzwFj0=
+
+        -> Application Server: Frontend To Take Request 
+
+            -> Public Server 
+
+            -> Java App Server i.e Apache Tomcat Server 
+
+            -> Apache Tomcat Server Runs On Port "8080" 
+
+                -> Add 8080 in Network Security Group 
+
+        -> Database Server: Store Data In Database 
+
+            -> Private Server
+
+            -> Database Server: MySQL Runs On Port "3306" 
+
+                -> Add 3306 in Network Security Group, allowing from only Application Server 
+
+    -> Database Storage - IaaS - You are responsible
+
+        -> Setup Private Virtual Machine 
+        -> Install OS 
+        -> Install Patches & Updates 
+        -> Download Database Software 
+        -> Install Database Software 
+
+    -> NOTE: Once Database Server is setup, then Developer will use 
+            Database connection details in Application
+
+                -> Database connection details
+
+                    -> Address Of Database 
+                    -> Port Of Database
+                    -> Username Of Database
+                    -> Password Of Database
+
+    -> Steps For Database Setup 
+
+        -> First Login to private server i.e Database Server
+
+        -> sudo ss -ntpl 
+
+            -> No port 3306 i.e No MySQL Database is present 
+
+        -> Install MySQL Database
+
+            -> sudo apt update -y 
+            -> sudo apt install docker.io -y 
+            -> sudo docker run -dt --name mysql -e MYSQL_ROOT_PASSWORD=your_password --network=host mysql:5.7
+            -> sudo ss -ntpl 
+
+        -> To verify Connectivity b/w App Server and Database Server 
+
+            -> Login To App Server 
+            -> Install MySQL Client On App Server and Check Connection With Database Server
+            -> sudo apt update -y 
+            -> sudo apt install mysql-client -y 
+            -> sudo ss -ntpl
+            -> mysql 
+            -> mysql -h pvt-db-ip -u username -p 
+            -> mysql -h 10.0.2.4 -u root -p 
+            -> SHOW DATABASES;
+            -> CREATE DATABASE jwt;
+            -> SHOW DATABASES;
+            -> USE jwt;
+            -> SHOW TABLES;
+
+                CREATE TABLE `USER` (
+                `id` int(10) unsigned NOT NULL auto_increment,
+                `first_name` varchar(45) NOT NULL,
+                `last_name` varchar(45) NOT NULL,
+                `email` varchar(45) NOT NULL,
+                `username` varchar(45) NOT NULL,
+                `password` varchar(45) NOT NULL,
+                `regdate` date NOT NULL,
+                PRIMARY KEY (`id`)
+                ) ENGINE = InnoDB DEFAULT CHARSET = latin1;	
+
+            -> SHOW TABLES;
+            -> SELECT * FROM USER;
+
+            -> Open a new session for Application Server For Code Changes 
+
+                -> Install Tomcat Server 
+
+                    -> sudo ss -ntpl 
+                    -> java 
+                    -> sudo apt update -y 
+                    -> sudo apt install openjdk-11* -y
+                    -> java
+                    -> wget https://archive.apache.org/dist/tomcat/tomcat-7/v7.0.94/bin/apache-tomcat-7.0.94.tar.gz
+                    -> tar xf apache-tomcat-7.0.94.tar.gz
+                    -> sudo ss -ntpl
+                    -> ~/apache-tomcat-7.0.94/bin/startup.sh 
+                    -> sudo ss -ntpl
+                    -> Browse Public-IP:8080 
+                    -> Browse Public-IP:8080/LoginWebApp 
+                        -> HTTP Status 404 – Not Found
+
+        -> Setup Application On Tomcat & Connect With Database 
+
+            -> ls 
+            -> git clone -b aws https://github.com/ravi2krishna/aws-rds-java.git 	
+            -> ls 
+            -> cd aws-rds-java
+            
+            -> vi src/main/webapp/userRegistration.jsp
+                    
+                    Change database address & credentials
+
+                    -> "jdbc:mysql://10.0.2.4:3306/jwt", "root", "your_password"
+
+                -> vi src/main/webapp/login.jsp
+
+                    Change database address & credentials
+
+                    -> "jdbc:mysql://10.0.2.4:3306/jwt", "root", "your_password"
+
+                -> Build Application 
+
+                    -> mvn package 
+
+                    -> sudo apt install maven -y
+
+                    -> ls target 
+
+                    -> mvn package
+
+                    -> ls target 
+
+                -> Deploy Application On Tomcat 
+
+                    -> Browse Public-IP:8080/LoginWebApp 
+
+                        -> HTTP Status 404 – Not Found
+
+                    -> cp ~/aws-rds-java/target/LoginWebApp.war ~/apache-tomcat-7.0.94/webapps/
+
+                    -> Browse Public-IP:8080/LoginWebApp 
