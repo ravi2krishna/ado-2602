@@ -1436,3 +1436,13 @@
         and web acceleration.
         -> Centralized Authentication: Simplifies management by handling security policies 
         at the edge. 
+
+
+16 Mar 2026
+=============
+
+    -> LAB Implementation Of High Availability
+
+    
+
+
