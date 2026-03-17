@@ -1444,5 +1444,45 @@
     -> LAB Implementation Of High Availability
 
     
+17 Mar 2026
+=============
+
+    -> Fault Tolerance 
+
+        -> Fault Tolerance in Azure is an ability of the systems to continue 
+        operating without interruption in the event of Hardware Failures i.e "Self Healing"
 
 
+    -> Scalability 
+
+        -> Scalability in Azure is an ability of the systems to handle the 
+        increasing workloads and accommodate according to Growing Demands.
+
+
+    -> Azure Virtual Machine Scale Sets (VMSS)
+    
+        -> VMSS you create and manage a group of load balanced virtual machines (VM) instances.
+        The number of VM instances can automatically increase or decrease in response to 
+        demand or a defined schedule. Scale sets provide the following key benefits:
+
+            -> Easy to create and manage multiple VMs
+            -> Provides high availability and application resiliency by 
+            distributing VMs across availability zones or fault domains
+            -> Allows your application to automatically "scale" as resource demand changes
+            -> Works at large-scale
+
+        -> NOTE: While doing this lab go with a different location 
+        other than West US 2    
+
+        -> NOTE: While creating VMSS, select Orchestration mode
+        Uniform: optimized for large scale stateless workloads
+
+        -> NOTE: 
+                Scaling configuration
+                Scaling condition count: 1
+                Predictive autoscaling: Disabled
+                Diagnostic logs: Disabled
+                Scale-in policy: Default
+                Force delete: Disabled
+
+        -> Predictive autoscale Mode: Enabled
