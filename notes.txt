@@ -1486,3 +1486,18 @@
                 Force delete: Disabled
 
         -> Predictive autoscale Mode: Enabled
+
+
+18th Mar 2026
+=============
+
+    -> Scalability
+
+        -> Scalability is the ability of a business, system, or software to 
+        handle growing workloads, increased data, or expanding demand efficiently 
+        without sacrificing performance or stability. 
+        
+        -> It means growing capacity (e.g., users, transactions) by adding new resources
+
+
+    -> Implementation Of Auto Scaling Using VMSS
